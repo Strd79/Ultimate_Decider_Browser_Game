@@ -1,15 +1,26 @@
 <template>
   <div id="app">
     <h1>Ultimate Decider!</h1>
+    <player-form></player-form>
   </div>
 </template>
 
 <script>
-import  from './components/.vue'
+import { eventBus } from './main.js'
+import PlayerItem from './components/PlayerItem'
+import PlayerForm from './components/PlayerForm'
+import PLayerServices from './services/PlayerServices.js'
 
 export default {
   name: 'App',
+  data(){
+    return {
+      player_one: null,
+      player_two: null
+    }
+  },
   components: {
+    'player-form': PlayerForm
    
   }
 }
