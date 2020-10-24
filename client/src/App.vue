@@ -5,6 +5,7 @@
     <select name="player1">
       <option v-for="(player, index) in playersList" :player="player" :key="index" :value="player">{{player.name}}</option>
     </select>
+    <game-box></game-box>
   </div>
 </template>
 
@@ -13,6 +14,7 @@ import { eventBus } from './main.js'
 import PlayerItem from './components/PlayerItem'
 import PlayerForm from './components/PlayerForm'
 import PlayerServices from './services/PlayerServices.js'
+import GameBox from './components/GameBox'
 
 export default {
   name: 'App',
@@ -24,7 +26,8 @@ export default {
     }
   },
   components: {
-    'player-form': PlayerForm
+    'player-form': PlayerForm,
+    'game-box': GameBox
    
   },
 

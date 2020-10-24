@@ -2,50 +2,119 @@
     <div>
     <h1>Memory Match Game</h1>
         <div class="grid">
-            <div class="grid-item">1</div>
-            <div class="grid-item">2</div>
-            <div class="grid-item">3</div>
-            <div class="grid-item">4</div>
-            <div class="grid-item">5</div>
-            <div class="grid-item">6</div>
-            <div class="grid-item">7</div>
-            <div class="grid-item">8</div>
-            <div class="grid-item">9</div>
-            <div class="grid-item">10</div>
-            <div class="grid-item">11</div>
-            <div class="grid-item">12</div>
-            <div class="grid-item">13</div>
-            <div class="grid-item">14</div>
-            <div class="grid-item">15</div>
-            <div class="grid-item">16</div>
+            <card v-for="(card, index) in cards" :card="card" :key="index"></card>
         </div>
     </div>
 </template>
 
 <script>
+import Card from '../components/Card'
+
 export default {
     name: 'memory-match-game',
 
     data(){
         return {    
-            cards: []
+            cards: [
+                {
+                    name: "Circle",
+                    image: "/img/circle.8ebac252.png"
+                },
+                {
+                    name: "Square",
+                    image: "/img/square.f2a197cd.png",
+                },
+                {
+                    name: "Star",
+                    image: "/img/star.4ceb59ff.png",
+                },
+                {
+                    name: "Cross",
+                    image: "/img/cross.7a8a1fd1.png",
+                },
+                {
+                    name: "Triangle",
+                    image: "/img/triangle.9aae23a1.png",
+                },
+                {
+                    name: "Diamond",
+                    image: "/img/diamond.06a37c34.png",
+                },
+                {
+                    name: "Crescent",
+                    image: "/img/crescent.69647f6b.png" ,
+                },
+                {
+                    name: "Hexagon",
+                    image: "/img/hexagon.0303010b.png" ,
+                },
+                {
+                    name: "Circle",
+                    image: "/img/circle.8ebac252.png"
+                },
+                {
+                    name: "Square",
+                    image: "/img/square.f2a197cd.png",
+                },
+                {
+                    name: "Star",
+                    image: "/img/star.4ceb59ff.png",
+                },
+                {
+                    name: "Cross",
+                    image: "/img/cross.7a8a1fd1.png",
+                },
+                {
+                    name: "Triangle",
+                    image: "/img/triangle.9aae23a1.png",
+                },
+                {
+                    name: "Diamond",
+                    image: "/img/diamond.06a37c34.png",
+                },
+                {
+                    name: "Crescent",
+                    image: "/img/crescent.69647f6b.png" ,
+                },
+                {
+                    name: "Hexagon",
+                    image: "/img/hexagon.0303010b.png" ,
+                },
+            ],
+            matchedCards: [],
+
+
         }
+    },
+
+    methods: {
+        shuffleCards(){
+            cards = this.cards;
+            cards = cards.sort(() => Math.random() - 0.5)
+        }
+
+    },
+    components: {
+        'card': Card
     }
 }
 </script>
 
 <style>
 
+
 .grid {
+  background-color: blue;
   list-style: none;
-  margin: 0;
-  padding: 0;
+  margin: 0 auto;
+  padding: 20px;
   display: grid;
-  grid-gap: 20px;
+  grid-gap: 10px;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr;
-  width: calc(100vw -80px);
-  height: calc(100vh - 100px);
+  width: 500px;
+  height: 500px;
+
 }
 
 .grid-item {
