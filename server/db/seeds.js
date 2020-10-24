@@ -1,7 +1,7 @@
 const { Db } = require("mongodb")
 
-use ultimate_decider_game
-db.dropDatebase()
+use ultimate_decider_game;
+db.dropDatabase()
 
 db.players.insertMany([
     {
