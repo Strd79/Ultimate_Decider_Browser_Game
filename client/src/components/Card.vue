@@ -1,7 +1,6 @@
 <template>
   <div class="card">
-      <!-- <p>{{card.name}}</p> -->
-      <img class="front-image" :src="card.image" alt="x">
+      <img class="front-image" :src="card.imgUrl" alt="x">
   </div>
 </template>
 

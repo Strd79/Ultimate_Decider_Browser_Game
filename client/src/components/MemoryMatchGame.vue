@@ -10,93 +10,57 @@
 <script>
 import Card from '../components/Card'
 
+
 export default {
     name: 'memory-match-game',
 
     data(){
-        return {    
-            cards: [
-                {
-                    name: "Circle",
-                    image: "/img/circle.8ebac252.png"
-                },
-                {
-                    name: "Square",
-                    image: "/img/square.f2a197cd.png",
-                },
-                {
-                    name: "Star",
-                    image: "/img/star.4ceb59ff.png",
-                },
-                {
-                    name: "Cross",
-                    image: "/img/cross.7a8a1fd1.png",
-                },
-                {
-                    name: "Triangle",
-                    image: "/img/triangle.9aae23a1.png",
-                },
-                {
-                    name: "Diamond",
-                    image: "/img/diamond.06a37c34.png",
-                },
-                {
-                    name: "Crescent",
-                    image: "/img/crescent.69647f6b.png" ,
-                },
-                {
-                    name: "Hexagon",
-                    image: "/img/hexagon.0303010b.png" ,
-                },
-                {
-                    name: "Circle",
-                    image: "/img/circle.8ebac252.png"
-                },
-                {
-                    name: "Square",
-                    image: "/img/square.f2a197cd.png",
-                },
-                {
-                    name: "Star",
-                    image: "/img/star.4ceb59ff.png",
-                },
-                {
-                    name: "Cross",
-                    image: "/img/cross.7a8a1fd1.png",
-                },
-                {
-                    name: "Triangle",
-                    image: "/img/triangle.9aae23a1.png",
-                },
-                {
-                    name: "Diamond",
-                    image: "/img/diamond.06a37c34.png",
-                },
-                {
-                    name: "Crescent",
-                    image: "/img/crescent.69647f6b.png" ,
-                },
-                {
-                    name: "Hexagon",
-                    image: "/img/hexagon.0303010b.png" ,
-                },
-            ],
+        return {
+            shapes: ['circle', 'triangle', 'cross', 'star', 'square', 'crescent', 'hexagon', 'diamond'],    
+            cards: [],
             matchedCards: [],
-
-
         }
+    },
+    mounted(){
+        this.createCards(this.shapes)
+        this.shuffleCards(this.cards)
     },
 
     methods: {
-        shuffleCards(){
-            cards = this.cards;
-            cards = cards.sort(() => Math.random() - 0.5)
-        }
+        createCards(items){
+            items.forEach( item => {
+                const card = {
+                    matchName: item,
+                    flipped: false,
+                    id: `${item}-a`,
+                    imgUrl: `/assets/${item}.png`,
+                    matched: false,
+                    cardBack: `..assets/cardBack.jpeg`
+                }
+                const cardA = card; 
+                this.cards.push(cardA);
+                const cardB = {...card};
+                cardB.id = `${item}-b`
+                this.cards.push(cardB);
+            })
+        },
 
+
+        shuffleCards(cardArray){
+            var j, x, i;
+            for (i = cardArray.length -1; i > 0; i--) {
+            j = Math.floor(Math.random() * (i + 1));
+            x = cardArray[i];
+            cardArray[i] = cardArray[j];
+            cardArray[j] = x;
+             }
+            return cardArray
+        },
     },
     components: {
         'card': Card
     }
+    
 }
 </script>
 
@@ -117,7 +81,4 @@ export default {
 
 }
 
-.grid-item {
-    background-color: grey;
-}
 </style>

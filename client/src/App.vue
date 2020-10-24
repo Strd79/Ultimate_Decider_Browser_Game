@@ -15,6 +15,7 @@ import PlayerItem from './components/PlayerItem'
 import PlayerForm from './components/PlayerForm'
 import PlayerServices from './services/PlayerServices.js'
 import GameBox from './components/GameBox'
+import MemoryGame from './components/MemoryMatchGame'
 
 export default {
   name: 'App',
