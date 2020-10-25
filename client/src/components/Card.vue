@@ -3,7 +3,7 @@
       <div class="card_back" v-on:click="makeCardFlipped">
         <img class="back-image" v-if='!card.flipped' :src="card.cardBack">
         <div class="card_front">
-            <img class="front-image" v-if='card.flipped' :src="card.imgUrl">
+            <img class="front-image" v-if='card.flipped' :src="card.imgUrl" disabled>
         </div>
       </div>
     
@@ -13,14 +13,18 @@
 </template>
 
 <script>
+import { eventBus } from '../main'
+
 export default {
     name: 'card',
 
     props: ["card"],
+
     methods: {
         makeCardFlipped(){
             console.log('is clicked!')
             this.card.flipped = true
+            eventBus.$emit("flipped-card", this.card)
         }
     }
 

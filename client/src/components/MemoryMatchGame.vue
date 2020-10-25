@@ -8,6 +8,7 @@
 </template>
 
 <script>
+import { eventBus } from "../main.js"
 import Card from '../components/Card'
 
 
@@ -18,12 +19,19 @@ export default {
         return {
             shapes: ['circle', 'triangle', 'cross', 'star', 'square', 'crescent', 'hexagon', 'diamond'],    
             cards: [],
-            matchedCards: [],
+            flippedCards: [],
         }
     },
     mounted(){
         this.createCards(this.shapes)
         this.shuffleCards(this.cards)
+
+        eventBus.$on("flipped-card", (card) => {
+            this.flippedCards.push(card)
+            if (this.flippedCards.length === 2) {
+                setTimeout(this.checkForMatch, 1000, this.flippedCards)
+            }
+        })
     },
 
     methods: {
@@ -45,9 +53,8 @@ export default {
             })
         },
 
-
         shuffleCards(cardArray){
-            var j, x, i;
+            let j, x, i;
             for (i = cardArray.length -1; i > 0; i--) {
             j = Math.floor(Math.random() * (i + 1));
             x = cardArray[i];
@@ -56,6 +63,28 @@ export default {
              }
             return cardArray
         },
+
+        checkForMatch(array){
+            const card1 = array[0];
+            const card2 = array[1];
+            if (card1.matchName !== card2.matchName){
+                for (let card of this.cards) {
+                if (card.id === card1.id) {
+                        card.flipped = false;
+                    }
+                if (card.id === card2.id){
+                        card.flipped = false
+                    }
+                }
+            
+                this.flippedCards = []
+
+            } else {
+                
+               this.flippedCards = [] 
+            }
+        }
+        
     },
     components: {
         'card': Card
