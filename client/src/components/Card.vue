@@ -1,6 +1,8 @@
 <template>
   <div class="card">
-      <img class="front-image" :src="card.imgUrl" alt="x">
+      <img class="back-image" :src="card.cardBack" alt="x">
+      <!--card back image = v-on:click 
+      if false show back else true show front-->
   </div>
 </template>
 
@@ -24,4 +26,10 @@ export default {
     align-self: center;
     width: 100px;
 }
+
+.back-image {
+    align-self: center;
+    width: 100px;
+}
+
 </style>

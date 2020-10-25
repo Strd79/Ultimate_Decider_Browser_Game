@@ -35,7 +35,7 @@ export default {
                     id: `${item}-a`,
                     imgUrl: `/assets/${item}.png`,
                     matched: false,
-                    cardBack: `..assets/cardBack.jpeg`
+                    cardBack: "/assets/cardBack.png"
                 }
                 const cardA = card; 
                 this.cards.push(cardA);
