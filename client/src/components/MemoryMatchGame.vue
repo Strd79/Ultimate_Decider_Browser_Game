@@ -20,6 +20,7 @@ export default {
             shapes: ['circle', 'triangle', 'cross', 'star', 'square', 'crescent', 'hexagon', 'diamond'],    
             cards: [],
             flippedCards: [],
+            matchedCards: []
         }
     },
     mounted(){
@@ -28,8 +29,10 @@ export default {
 
         eventBus.$on("flipped-card", (card) => {
             this.flippedCards.push(card)
+            // this.checkCardFlipped(card)
+            // this.checkCard(card)
             if (this.flippedCards.length === 2) {
-                setTimeout(this.checkForMatch, 1000, this.flippedCards)
+                setTimeout(this.checkForMatch, 750, this.flippedCards)
             }
         })
     },
@@ -43,7 +46,7 @@ export default {
                     id: `${item}-a`,
                     imgUrl: `/assets/${item}.png`,
                     matched: false,
-                    cardBack: "/assets/cardBack.png"
+                    cardBack: "/assets/cardBack2.png"
                 }
                 const cardA = card; 
                 this.cards.push(cardA);
@@ -80,10 +83,45 @@ export default {
                 this.flippedCards = []
 
             } else {
-                
+               this.matchedCards.push(card1, card2)
                this.flippedCards = [] 
             }
-        }
+        },
+
+        // checkCardFlipped(selectedCard){
+        //     if (selectedCard.flipped = false){
+        //         for ( let card of this.cards){
+        //             if (card.id === selectedCard.id){
+        //                 card.flipped = true
+        //             }
+        //         }
+        //         this.flippedCards.push(selectedCard)
+        //     }
+        // },
+
+        // checkCard(currentCard) {
+        //     if (this.flippedCards.length !== 0){
+        //         for (let card of this.flippedCards) {
+        //             console.log(card);
+        //             if (card.id !== currentCard.id) {
+        //                 if (this.matchedCards !== 0){
+        //                     for (let card of this.matchedCards) {
+        //                         if (card.id !== currentCard.id) {
+        //                             this.flippedCards.push(currentCard)
+        //                         }
+        //                     }
+        //                 } else {
+        //                     this.flippedCards.push(currentCard)
+        //                 }
+        //             } else {
+        //                 this.flippedCards.push(currentCard)
+        //             }
+        //         }
+        //     } else {
+        //         this.flippedCards.push(currentCard)
+        //     }
+        // }
+        
         
     },
     components: {

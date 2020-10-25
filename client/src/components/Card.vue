@@ -22,7 +22,6 @@ export default {
 
     methods: {
         makeCardFlipped(){
-            console.log('is clicked!')
             this.card.flipped = true
             eventBus.$emit("flipped-card", this.card)
         }
