@@ -18,14 +18,18 @@ import { eventBus } from '../main'
 export default {
     name: 'card',
 
-    props: ["card"],
+    props: ["card", "flippedCardArray"],
 
     methods: {
         makeCardFlipped(){
+            console.log(this.flippedCardArray.length);
+            if(this.flippedCardArray.length <= 2){
             this.card.flipped = true
-            eventBus.$emit("flipped-card", this.card)
+            eventBus.$emit("check-flipped", this.card)
+            }
         }
     }
+
 
 
     

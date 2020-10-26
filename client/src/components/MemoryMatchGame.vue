@@ -2,7 +2,7 @@
     <div>
     <h1>Memory Match Game</h1>
         <div class="grid">
-            <card v-for="(card, index) in cards" :card="card" :key="index"></card>
+            <card v-for="(card, index) in cards" :flippedCardArray="flippedCards" :card="card" :key="index"></card>
         </div>
     </div>
 </template>
@@ -27,13 +27,24 @@ export default {
         this.createCards(this.shapes)
         this.shuffleCards(this.cards)
 
-        eventBus.$on("flipped-card", (card) => {
-            this.flippedCards.push(card)
-            // this.checkCardFlipped(card)
-            // this.checkCard(card)
-            if (this.flippedCards.length === 2) {
+        // eventBus.$on("flipped-card", (card) => {
+        //     // this.checkCardFlipped(card)
+        //     // this.checkCard(card)
+        //     if (this.flippedCards.length === 2) {
+        //         setTimeout(this.checkForMatch, 750, this.flippedCards)
+        //     }
+        // })
+
+        eventBus.$on("check-flipped", (card) => {
+            // if(this.flippedCards.length <= 2){
+            if(!this.flippedCards.includes(card)){
+                if(!this.matchedCards.includes(card)){
+                this.flippedCards.push(card)
                 setTimeout(this.checkForMatch, 750, this.flippedCards)
+                }
             }
+            
+            // }
         })
     },
 
@@ -86,7 +97,7 @@ export default {
                this.matchedCards.push(card1, card2)
                this.flippedCards = [] 
             }
-        },
+        }
 
         // checkCardFlipped(selectedCard){
         //     if (selectedCard.flipped = false){
