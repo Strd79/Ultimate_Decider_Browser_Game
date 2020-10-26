@@ -16,7 +16,7 @@ export default {
 
     data(){
         return {
-            shapes: ['circle', 'triangle', 'cross', 'star', 'square', 'crescent', 'hexagon', 'diamond'],    
+            shapes: ['circle', 'triangle', 'cross', 'star', 'square', 'crescent', 'hexagon', 'diamond'],   
             cards: [],
             matchedCards: [],
         }
