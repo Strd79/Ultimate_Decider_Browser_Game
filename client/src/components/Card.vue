@@ -6,9 +6,6 @@
             <img class="front-image" v-if='card.flipped' :src="card.imgUrl" disabled>
         </div>
       </div>
-    
-      <!--card back image = v-on:click 
-      if false show back else true show front-->
   </div>
 </template>
 
@@ -22,17 +19,12 @@ export default {
 
     methods: {
         makeCardFlipped(){
-            console.log(this.flippedCardArray.length);
             if(this.flippedCardArray.length <= 2){
             this.card.flipped = true
             eventBus.$emit("check-flipped", this.card)
             }
         }
-    }
-
-
-
-    
+    }    
 }
 </script>
 

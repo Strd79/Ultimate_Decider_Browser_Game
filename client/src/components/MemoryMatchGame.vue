@@ -27,24 +27,14 @@ export default {
         this.createCards(this.shapes)
         this.shuffleCards(this.cards)
 
-        // eventBus.$on("flipped-card", (card) => {
-        //     // this.checkCardFlipped(card)
-        //     // this.checkCard(card)
-        //     if (this.flippedCards.length === 2) {
-        //         setTimeout(this.checkForMatch, 750, this.flippedCards)
-        //     }
-        // })
 
         eventBus.$on("check-flipped", (card) => {
-            // if(this.flippedCards.length <= 2){
             if(!this.flippedCards.includes(card)){
                 if(!this.matchedCards.includes(card)){
                 this.flippedCards.push(card)
-                setTimeout(this.checkForMatch, 750, this.flippedCards)
+                setTimeout(this.checkForMatch, 1000, this.flippedCards)
                 }
             }
-            
-            // }
         })
     },
 
@@ -99,40 +89,7 @@ export default {
             }
         }
 
-        // checkCardFlipped(selectedCard){
-        //     if (selectedCard.flipped = false){
-        //         for ( let card of this.cards){
-        //             if (card.id === selectedCard.id){
-        //                 card.flipped = true
-        //             }
-        //         }
-        //         this.flippedCards.push(selectedCard)
-        //     }
-        // },
 
-        // checkCard(currentCard) {
-        //     if (this.flippedCards.length !== 0){
-        //         for (let card of this.flippedCards) {
-        //             console.log(card);
-        //             if (card.id !== currentCard.id) {
-        //                 if (this.matchedCards !== 0){
-        //                     for (let card of this.matchedCards) {
-        //                         if (card.id !== currentCard.id) {
-        //                             this.flippedCards.push(currentCard)
-        //                         }
-        //                     }
-        //                 } else {
-        //                     this.flippedCards.push(currentCard)
-        //                 }
-        //             } else {
-        //                 this.flippedCards.push(currentCard)
-        //             }
-        //         }
-        //     } else {
-        //         this.flippedCards.push(currentCard)
-        //     }
-        // }
-        
         
     },
     components: {

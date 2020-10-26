@@ -1,10 +1,8 @@
 <template>
   <div id="app">
     <h1>Ultimate Decider!</h1>
-    <player-form></player-form>
-    <select name="player1">
-      <option v-for="(player, index) in playersList" :player="player" :key="index" :value="player">{{player.name}}</option>
-    </select>
+    <player-form :playersList="playersList"></player-form>
+    
     <game-box></game-box>
   </div>
 </template>
