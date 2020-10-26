@@ -1,17 +1,18 @@
 <template>
     <div>
-        <memory-match-game />
+        <memory-match-game :playerOne='playerOne' :playerTwo="playerTwo" />
     </div>
 </template>
 
 <script>
-import MemoryMatchGame from "@/components/MemoryMatchGame"
+import MemoryMatchGame from "@/components/memoryMatch/MemoryMatchGame"
 
 export default {
     name: 'game-box',
-
+    props: ['playerOne', 'playerTwo'],
     components: {
         'memory-match-game': MemoryMatchGame
+
 }
 }
 </script>

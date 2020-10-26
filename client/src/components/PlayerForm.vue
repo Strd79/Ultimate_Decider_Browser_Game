@@ -8,16 +8,16 @@
         </form>
       </div>
       <div>
-        <form>
+        <form id="new-game-form" v-on:submit="startGame">
             <label for="player1">Player 1:</label>
-            <select name="player1" required>
+            <select name="player1" id="player1" v-model="playerOne" required>
                 <option disabled selected value="">Select a Player</option>
-                <option v-for="(player, index) in playersList">{{player.name}}</option>
+                <option v-for="(player, index) in playersList" :key="index" :value="player">{{player.name}}</option>
             </select>
             <label for="player2">Player 2:</label>
-            <select name="player2" required>
+            <select name="player2" id="player2" v-model="playerTwo" required>
                 <option disabled selected value="">Select a Player</option>
-                <option v-for="(player, index) in playersList">{{player.name}}</option>
+                <option v-for="(player, index) in playersList" :key="index" :value="player">{{player.name}}</option>
             </select><br>
             <input type="submit" value="PLAY GAME">
         </form>
@@ -34,7 +34,9 @@ export default {
 
     data(){
         return {
-            playerName: null
+            playerName: null,
+            playerOne: null,
+            playerTwo: null
 
         }
     },
@@ -53,7 +55,12 @@ export default {
             PlayerService.postPlayer(player)
             .then(res => eventBus.$emit('player-added', res))
             this.playerName = ""
+        },
 
+        startGame(e){
+// will randomise
+        e.preventDefault();
+        eventBus.$emit("game-started", this.playerOne, this.playerTwo)
         }
     }
 }

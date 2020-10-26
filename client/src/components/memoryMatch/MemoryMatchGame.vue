@@ -4,17 +4,19 @@
         <div class="grid">
             <card v-for="(card, index) in cards" :flippedCardArray="flippedCards" :card="card" :key="index"></card>
         </div>
+        <memory-match-scoreboard :playerOne='playerOne' :playerTwo="playerTwo" />
     </div>
 </template>
 
 <script>
-import { eventBus } from "../main.js"
-import Card from '../components/Card'
+import { eventBus } from '@/main.js'
+import Card from './Card.vue'
+import MemoryMatchScoreBoard from '@/components/memoryMatch/MemoryMatchScoreBoard.vue'
 
 
 export default {
     name: 'memory-match-game',
-
+    props: ['playerOne', 'playerTwo'],
     data(){
         return {
             shapes: ['circle', 'triangle', 'cross', 'star', 'square', 'crescent', 'hexagon', 'diamond'],   
@@ -93,7 +95,8 @@ export default {
         
     },
     components: {
-        'card': Card
+        'card': Card,
+        'memory-match-scoreboard': MemoryMatchScoreBoard
     }
     
 }
