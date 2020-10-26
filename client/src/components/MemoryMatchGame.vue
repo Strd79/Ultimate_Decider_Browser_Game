@@ -8,6 +8,7 @@
 </template>
 
 <script>
+import { eventBus } from "../main.js"
 import Card from '../components/Card'
 
 
@@ -18,12 +19,22 @@ export default {
         return {
             shapes: ['circle', 'triangle', 'cross', 'star', 'square', 'crescent', 'hexagon', 'diamond'],   
             cards: [],
-            matchedCards: [],
+            flippedCards: [],
+            matchedCards: []
         }
     },
     mounted(){
         this.createCards(this.shapes)
         this.shuffleCards(this.cards)
+
+        eventBus.$on("flipped-card", (card) => {
+            this.flippedCards.push(card)
+            // this.checkCardFlipped(card)
+            // this.checkCard(card)
+            if (this.flippedCards.length === 2) {
+                setTimeout(this.checkForMatch, 750, this.flippedCards)
+            }
+        })
     },
 
     methods: {
@@ -35,7 +46,7 @@ export default {
                     id: `${item}-a`,
                     imgUrl: `/assets/${item}.png`,
                     matched: false,
-                    cardBack: `..assets/cardBack.jpeg`
+                    cardBack: "/assets/cardBack2.png"
                 }
                 const cardA = card; 
                 this.cards.push(cardA);
@@ -45,9 +56,8 @@ export default {
             })
         },
 
-
         shuffleCards(cardArray){
-            var j, x, i;
+            let j, x, i;
             for (i = cardArray.length -1; i > 0; i--) {
             j = Math.floor(Math.random() * (i + 1));
             x = cardArray[i];
@@ -56,6 +66,63 @@ export default {
              }
             return cardArray
         },
+
+        checkForMatch(array){
+            const card1 = array[0];
+            const card2 = array[1];
+            if (card1.matchName !== card2.matchName){
+                for (let card of this.cards) {
+                if (card.id === card1.id) {
+                        card.flipped = false;
+                    }
+                if (card.id === card2.id){
+                        card.flipped = false
+                    }
+                }
+            
+                this.flippedCards = []
+
+            } else {
+               this.matchedCards.push(card1, card2)
+               this.flippedCards = [] 
+            }
+        },
+
+        // checkCardFlipped(selectedCard){
+        //     if (selectedCard.flipped = false){
+        //         for ( let card of this.cards){
+        //             if (card.id === selectedCard.id){
+        //                 card.flipped = true
+        //             }
+        //         }
+        //         this.flippedCards.push(selectedCard)
+        //     }
+        // },
+
+        // checkCard(currentCard) {
+        //     if (this.flippedCards.length !== 0){
+        //         for (let card of this.flippedCards) {
+        //             console.log(card);
+        //             if (card.id !== currentCard.id) {
+        //                 if (this.matchedCards !== 0){
+        //                     for (let card of this.matchedCards) {
+        //                         if (card.id !== currentCard.id) {
+        //                             this.flippedCards.push(currentCard)
+        //                         }
+        //                     }
+        //                 } else {
+        //                     this.flippedCards.push(currentCard)
+        //                 }
+        //             } else {
+        //                 this.flippedCards.push(currentCard)
+        //             }
+        //         }
+        //     } else {
+        //         this.flippedCards.push(currentCard)
+        //     }
+        // }
+        
+        
     },
     components: {
         'card': Card
