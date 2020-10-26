@@ -6,7 +6,7 @@
         </div>
         <div>
             <h3>Player 2</h3>
-            <h4>Score: {{player2}} </h4>
+            <h4>Score: </h4>
         </div>
     </div>
 </template>

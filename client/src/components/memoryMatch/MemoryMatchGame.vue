@@ -1,10 +1,10 @@
 <template>
-    <div>
+    <div v-if="playerOne">
     <h1>Memory Match Game</h1>
         <div class="grid">
             <card v-for="(card, index) in cards" :flippedCardArray="flippedCards" :card="card" :key="index"></card>
         </div>
-        <memory-match-scoreboard :playerOne='playerOne' :playerTwo="playerTwo" />
+        <memory-match-scoreboard :activePlayer="activePlayer" :playerOne='playerOne' :playerTwo="playerTwo"></memory-match-scoreboard>
     </div>
 </template>
 
@@ -12,7 +12,6 @@
 import { eventBus } from '@/main.js'
 import Card from './Card.vue'
 import MemoryMatchScoreBoard from '@/components/memoryMatch/MemoryMatchScoreBoard.vue'
-
 
 export default {
     name: 'memory-match-game',
@@ -22,10 +21,12 @@ export default {
             shapes: ['circle', 'triangle', 'cross', 'star', 'square', 'crescent', 'hexagon', 'diamond'],   
             cards: [],
             flippedCards: [],
-            matchedCards: []
+            matchedCards: [],
+            currentPlayer: null
         }
     },
     mounted(){
+
         this.createCards(this.shapes)
         this.shuffleCards(this.cards)
 
@@ -36,10 +37,20 @@ export default {
                 this.flippedCards.push(card)
                 setTimeout(this.checkForMatch, 1000, this.flippedCards)
                 }
+
             }
         })
     },
 
+    computed: {
+        activePlayer: function(){
+            if(this.currentPlayer === null){
+            return this.playerOne
+            } else {
+                return this.playerTwo
+            }
+        }
+    },
     methods: {
         createCards(items){
             items.forEach( item => {
@@ -82,13 +93,24 @@ export default {
                         card.flipped = false
                     }
                 }
-            
+                if (this.activePlayer === this.playerOne){
+                    this.currentPlayer =this.playerTwo
+            } else {
+                if (this.activePlayer === this.playerTwo){
+                    this.currentPlayer = null
+                }
+            }
                 this.flippedCards = []
 
             } else {
                this.matchedCards.push(card1, card2)
-               this.flippedCards = [] 
+               this.flippedCards = []
+               //+= 1 to score 
             }
+        },
+        assignActivePlayer(player){
+            this.activePlayer = player
+            console.log(player)
         }
 
 
