@@ -4,7 +4,7 @@
         <div class="grid">
             <card v-for="(card, index) in cards" :flippedCardArray="flippedCards" :card="card" :key="index"></card>
         </div>
-        <memory-match-scoreboard :activePlayer="activePlayer" :playerOne='playerOne' :playerTwo="playerTwo"></memory-match-scoreboard>
+        <memory-match-scoreboard :activePlayer="activePlayer" :playerOne='playerOne' :playerTwo="playerTwo" :playerOne_score="playerOne_score" :playerTwo_score="playerTwo_score"></memory-match-scoreboard>
     </div>
 </template>
 
@@ -22,7 +22,9 @@ export default {
             cards: [],
             flippedCards: [],
             matchedCards: [],
-            currentPlayer: null
+            currentPlayer: null,
+            playerOne_score: 0,
+            playerTwo_score: 0
         }
     },
     mounted(){
@@ -37,7 +39,6 @@ export default {
                 this.flippedCards.push(card)
                 setTimeout(this.checkForMatch, 1000, this.flippedCards)
                 }
-
             }
         })
     },
@@ -106,15 +107,16 @@ export default {
                this.matchedCards.push(card1, card2)
                this.flippedCards = []
                //+= 1 to score 
+               this.addToScore()
             }
         },
-        assignActivePlayer(player){
-            this.activePlayer = player
-            console.log(player)
+        addToScore(){
+            if (this.activePlayer === this.playerTwo) {
+                this.playerTwo_score += 1
+            } else {
+                this.playerOne_score += 1
+            }
         }
-
-
-        
     },
     components: {
         'card': Card,

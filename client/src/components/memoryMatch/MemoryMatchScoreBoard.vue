@@ -1,18 +1,18 @@
 <template>
   <div v-if="playerOne" id="mm-scoreboard">
     <h2>Score board</h2>
-        <p v-if="activePlayer">{{activePlayer.name}}</p>
+        <p v-if="activePlayer">{{activePlayer.name}} to play</p>
         <div id="player-scores">
             <div>
                 <div class="">
                     <h3>Player: {{playerOne.name}} </h3>
-                    <h4>Score: {{this.player1_score}}</h4>
+                    <h4>Score: {{playerOne_score}}</h4>
                 </div>
             </div>
             <div>
                 <div class="">
                     <h3>Player: {{playerTwo.name}} </h3>
-                    <h4>Score: {{this.player2_score}}</h4>
+                    <h4>Score: {{playerTwo_score}}</h4>
                 </div>    
             </div>
         </div>
@@ -22,13 +22,7 @@
 <script>
 export default {
     name: 'memory-match-scoreboard',
-    props: ['playerOne', 'playerTwo', 'activePlayer'],
-    data() {
-        return {
-            player1_score: 0,
-            player2_score: 0  
-        }
-    }
+    props: ['playerOne', 'playerTwo', 'activePlayer', 'playerOne_score', 'playerTwo_score'],
 }
 </script>
 
