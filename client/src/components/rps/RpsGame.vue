@@ -13,7 +13,7 @@ import PlayerRps from './PlayerRps.vue'
 
 export default {
     name: 'rock-paper-scissors-game',
-    props: ['playerOne', 'playerTwo'],
+    props: ['playerOne', 'playerTwo', 'playerOneMatchScore', 'playerTwoMatchScore'],
     data() {
         return {
             playerOne_choice: null,
@@ -92,28 +92,39 @@ export default {
     methods: {
         checkWinner(playerOne_choice, playerTwo_choice){
             if (playerOne_choice === "scissors" && playerTwo_choice === "paper"){
+                eventBus.$emit('playerOneIncrease', [])
                 return this.winner = this.playerOne.name
             } else if (playerOne_choice === "rock" && playerTwo_choice === "scissors"){
+                eventBus.$emit('playerOneIncrease', [])
                 return this.winner = this.playerOne.name
             } else if (playerOne_choice === "paper" && playerTwo_choice === "rock") {
+                eventBus.$emit('playerOneIncrease'), []
                 return this.winner = this.playerOne.name
             } else if (playerOne_choice === "rock" && playerTwo_choice === "lizard") {
+                eventBus.$emit('playerOneIncrease'), []
                 return this.winner = this.playerOne.name
             } else if (playerOne_choice === "lizard" && playerTwo_choice === "spock") {
+                eventBus.$emit('playerOneIncrease'), []
                 return this.winner = this.playerOne.name
             } else if (playerOne_choice === "spock" && playerTwo_choice === "scissors") {
+                eventBus.$emit('playerOneIncrease'), []
                 return this.winner = this.playerOne.name
             } else if (playerOne_choice === "scissors" && playerTwo_choice === "lizard") {
+                eventBus.$emit('playerOneIncrease'), []
                 return this.winner = this.playerOne.name
             } else if (playerOne_choice === "lizard" && playerTwo_choice === "paper") {
+                eventBus.$emit('playerOneIncrease'), []
                 return this.winner = this.playerOne.name
             } else if (playerOne_choice === "paper" && playerTwo_choice === "spock") {
+                eventBus.$emit('playerOneIncrease'), []
                 return this.winner = this.playerOne.name
             } else if (playerOne_choice === "spock" && playerTwo_choice === "rock") {
+                eventBus.$emit('playerOneIncrease'), []
                 return this.winner = this.playerOne.name
             } else if (playerOne_choice === playerTwo_choice){
                 return this.draw = "It's a draw, everyone's a loser!"  
             } else {
+                eventBus.$emit('playerTwoIncrease', [])
                 return this.winner = this.playerTwo.name
             }
 
