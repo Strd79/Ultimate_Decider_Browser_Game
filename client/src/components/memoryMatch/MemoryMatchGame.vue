@@ -37,7 +37,7 @@ export default {
             if(!this.flippedCards.includes(card)){
                 if(!this.matchedCards.includes(card)){
                 this.flippedCards.push(card)
-                setTimeout(this.checkForMatch, 1000, this.flippedCards)
+                setTimeout(this.checkForMatch, 600, this.flippedCards)
                 }
             }
         })
@@ -50,7 +50,18 @@ export default {
             } else {
                 return this.playerTwo
             }
-        }
+        },
+
+        // whoWins: function(){
+        //     if (this.matchedCards.length === 16) {
+        //         console.log("whoWins function running");
+        //         if (this.playerOne_score > this.playerTwo_score) {
+        //             alert(`${playerOne.name} wins!`)
+        //         } else {
+        //             alert(`${playerTwo.name} wins!`)
+        //         }
+        //     }
+        // }
     },
     methods: {
         createCards(items){
@@ -105,9 +116,9 @@ export default {
 
             } else {
                this.matchedCards.push(card1, card2)
-               this.flippedCards = []
-               //+= 1 to score 
+               this.flippedCards = [] 
                this.addToScore()
+               this.whoWins()
             }
         },
         addToScore(){
@@ -115,6 +126,20 @@ export default {
                 this.playerTwo_score += 1
             } else {
                 this.playerOne_score += 1
+            }
+        },
+        whoWins(){
+            if (this.matchedCards.length === 16) {
+                console.log("whoWins function running");
+                if (this.playerOne_score > this.playerTwo_score) {
+                    alert(`${this.playerOne.name} wins with a score of ${this.playerOne_score}`)
+                }
+                else if(this.playerOne_score < this.playerTwo_score) {
+                    alert(`${this.playerTwo.name} wins with a score of ${this.playerTwo_score}`)
+                }
+                else {
+                    alert("It's a draw! Play again")
+                }
             }
         }
     },
