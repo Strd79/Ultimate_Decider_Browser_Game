@@ -1,8 +1,8 @@
 <template>
     <div>
         <match-score-board :playerOne='playerOne' :playerTwo="playerTwo" :playerOneMatchScore="playerOneMatchScore" :playerTwoMatchScore="playerTwoMatchScore" ></match-score-board>
-        <memory-match-game :playerOne='playerOne' :playerTwo="playerTwo" />
-        <rock-paper-scissors-game :playerOne='playerOne' :playerTwo="playerTwo" :playerOneMatchScore="playerOneMatchScore" :playerTwoMatchScore="playerTwoMatchScore" ></rock-paper-scissors-game>
+        <memory-match-game v-if="selectedGame === 0" :playerOne='playerOne' :playerTwo="playerTwo" />
+        <rock-paper-scissors-game v-if="selectedGame === 1" :playerOne='playerOne' :playerTwo="playerTwo" :playerOneMatchScore="playerOneMatchScore" :playerTwoMatchScore="playerTwoMatchScore" ></rock-paper-scissors-game>
          
     </div>
 </template>
@@ -18,6 +18,7 @@ export default {
     props: ['playerOne', 'playerTwo'],
     data(){
         return {
+            selectedGame: null,
             playerOneMatchScore:0,
             playerTwoMatchScore:0
         }
@@ -31,10 +32,19 @@ export default {
              console.log("playerTwoIncrease called");
             this.playerTwoMatchScore += 1
         })
+        eventBus.$on('game-started', () => {
+            this.randomiseGame()
+        })
         
-
-
     },
+
+    methods: {
+        randomiseGame() {
+          this.selectedGame = Math.floor((Math.random() * 2))
+          
+        }
+    },
+
     components: {
         'memory-match-game': MemoryMatchGame,
         'rock-paper-scissors-game': RockPaperScissors,
