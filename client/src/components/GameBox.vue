@@ -1,7 +1,7 @@
 <template>
     <div>
         <memory-match-game :playerOne='playerOne' :playerTwo="playerTwo" />
-         <rock-paper-scissors-game></rock-paper-scissors-game>
+         <rock-paper-scissors-game :playerOne='playerOne' :playerTwo="playerTwo" ></rock-paper-scissors-game>
     </div>
 </template>
 

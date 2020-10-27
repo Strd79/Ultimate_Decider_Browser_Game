@@ -1,7 +1,7 @@
 <template>
     <div>
         <h1>Rock Paper Scissors</h1>
-        <player-rps></player-rps>
+        <player-rps :playerOne="playerOne" :playerTwo="playerTwo" :activePlayer="activePlayer" :winner="winner" :playerOne_choice="playerOne_choice" :playerTwo_choice="playerTwo_choice" :draw="draw"></player-rps>
         
     </div>
   
@@ -19,25 +19,29 @@ export default {
             playerOne_choice: null,
             playerTwo_choice: null,
             currentPlayer: null,
+            winner: null,
+            draw: null
         }
     },
     mounted(){
         eventBus.$on("scissors", (player) => {
-            if (this.player === this.playerOne){
+            if (player === this.playerOne){
                 this.playerOne_choice = "scissors"
                 this.currentPlayer = this.playerTwo
-            } else{
+            } else {
                 this.playerTwo_choice = "scissors"
+                this.checkWinner(this.playerOne_choice, this.playerTwo_choice)
             }
             
         })
 
         eventBus.$on("rock", (player) => {
-            if (this.player === this.playerOne){
+            if (player === this.playerOne){
                 this.playerOne_choice = "rock"
                 this.currentPlayer = this.playerTwo
             } else{
                 this.playerTwo_choice = "rock"
+                this.checkWinner(this.playerOne_choice, this.playerTwo_choice)
             }
             
         })
@@ -48,9 +52,30 @@ export default {
                 this.currentPlayer = this.playerTwo
             } else{
                 this.playerTwo_choice = "paper"
+                this.checkWinner(this.playerOne_choice, this.playerTwo_choice)
             }
             
         })
+        eventBus.$on("lizard", (player) => {
+            if (player === this.playerOne){
+                this.playerOne_choice = "lizard"
+                this.currentPlayer = this.playerTwo
+            } else {
+                this.playerTwo_choice = "lizard"
+                this.checkWinner(this.playerOne_choice, this.playerTwo_choice)
+            }
+            
+        })
+        eventBus.$on("spock", (player) => {
+            if (player === this.playerOne){
+                this.playerOne_choice = "spock"
+                this.currentPlayer = this.playerTwo
+            } else {
+                this.playerTwo_choice = "spock"
+                this.checkWinner(this.playerOne_choice, this.playerTwo_choice)
+            }
+            
+        })        
 
 
 
@@ -65,7 +90,35 @@ export default {
         }
     },
     methods: {
-        
+        checkWinner(playerOne_choice, playerTwo_choice){
+            if (playerOne_choice === "scissors" && playerTwo_choice === "paper"){
+                return this.winner = this.playerOne.name
+            } else if (playerOne_choice === "rock" && playerTwo_choice === "scissors"){
+                return this.winner = this.playerOne.name
+            } else if (playerOne_choice === "paper" && playerTwo_choice === "rock") {
+                return this.winner = this.playerOne.name
+            } else if (playerOne_choice === "rock" && playerTwo_choice === "lizard") {
+                return this.winner = this.playerOne.name
+            } else if (playerOne_choice === "lizard" && playerTwo_choice === "spock") {
+                return this.winner = this.playerOne.name
+            } else if (playerOne_choice === "spock" && playerTwo_choice === "scissors") {
+                return this.winner = this.playerOne.name
+            } else if (playerOne_choice === "scissors" && playerTwo_choice === "lizard") {
+                return this.winner = this.playerOne.name
+            } else if (playerOne_choice === "lizard" && playerTwo_choice === "paper") {
+                return this.winner = this.playerOne.name
+            } else if (playerOne_choice === "paper" && playerTwo_choice === "spock") {
+                return this.winner = this.playerOne.name
+            } else if (playerOne_choice === "spock" && playerTwo_choice === "rock") {
+                return this.winner = this.playerOne.name
+            } else if (playerOne_choice === playerTwo_choice){
+                return this.draw = "It's a draw, everyone's a loser!"  
+            } else {
+                return this.winner = this.playerTwo.name
+            }
+
+        }
+
 
     },
     components: {
