@@ -45,9 +45,7 @@ export default {
         randomiseGame() {
           this.selectedGame = Math.floor((Math.random() * 2))
           
-        }
-    },
-    methods: {
+        },
         checkForWinner(){
             if (this.playerOneMatchScore + this.playerTwoMatchScore === 5){
                 if (this.playerOneMatchScore > this.playerTwoMatchScore){
