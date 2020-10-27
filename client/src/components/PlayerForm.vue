@@ -58,7 +58,6 @@ export default {
         },
 
         startGame(e){
-// will randomise
         e.preventDefault();
         eventBus.$emit("game-started", this.playerOne, this.playerTwo)
         }

@@ -3,7 +3,7 @@
     <h1>Ultimate Decider!</h1>
     <button v-on:click="openModal">Open Modal</button>
     <player-form :playersList="playersList"></player-form>
-    <modal-win-pop-up v-model="modalOpen" :currentWinner='currentWinner'></modal-win-pop-up>
+    <!-- <modal-win-pop-up v-model="modalOpen" :currentWinner='currentWinner'></modal-win-pop-up> -->
     <game-box :playerOne='playerOne' :playerTwo="playerTwo"></game-box>
   </div>
 </template>
