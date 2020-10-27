@@ -12,6 +12,7 @@
 import { eventBus } from '@/main.js'
 import Card from './Card.vue'
 import MemoryMatchScoreBoard from '@/components/memoryMatch/MemoryMatchScoreBoard.vue'
+import ModalWinPopUp from '@/components/ModalWinPopUp'
 
 export default {
     name: 'memory-match-game',
@@ -24,7 +25,7 @@ export default {
             matchedCards: [],
             currentPlayer: null,
             playerOne_score: 0,
-            playerTwo_score: 0
+            playerTwo_score: 0,
         }
     },
     mounted(){
@@ -130,22 +131,25 @@ export default {
         },
         whoWins(){
             if (this.matchedCards.length === 16) {
-                console.log("whoWins function running");
                 if (this.playerOne_score > this.playerTwo_score) {
-                    alert(`${this.playerOne.name} wins with a score of ${this.playerOne_score}`)
+                    eventBus.$emit("memoryMatch-playerOne-winner")
+                    // alert(`${this.playerOne.name} wins with a score of ${this.playerOne_score}`)
                 }
                 else if(this.playerOne_score < this.playerTwo_score) {
-                    alert(`${this.playerTwo.name} wins with a score of ${this.playerTwo_score}`)
+                    eventBus.$emit("memoryMatch-playerTwo-winner")
+                    // alert(`${this.playerTwo.name} wins with a score of ${this.playerTwo_score}`)
                 }
                 else {
-                    alert("It's a draw! Play again")
+                    eventBus.$emit("memoryMatch-draw")
+                    // alert("It's a draw! Play again")
                 }
             }
         }
     },
     components: {
         'card': Card,
-        'memory-match-scoreboard': MemoryMatchScoreBoard
+        'memory-match-scoreboard': MemoryMatchScoreBoard,
+        'modal-win-pop-up': ModalWinPopUp
     }
     
 }
