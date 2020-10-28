@@ -18,10 +18,10 @@ export default {
     methods: {
         markBox(){
             if(this.activePlayer === this.playerOne){
-                eventBus.$emit("X")
+                eventBus.$emit("X", this.xoBox)
                 console.log("emit X")
             } else if (this.activePlayer === this.playerTwo){
-                eventBus.$emit("O")
+                eventBus.$emit("O", this.xoBox)
                 console.log("emit O")
             } 
         }
@@ -33,9 +33,8 @@ export default {
 <style>
 .XObox {
     display: flex;
-    background-color: white;
+    background-color: red;
     justify-content: center;
-    
 }
 
 </style>

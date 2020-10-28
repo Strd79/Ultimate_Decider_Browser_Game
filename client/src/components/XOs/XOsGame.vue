@@ -14,12 +14,14 @@ import xoBox from './XOsBox'
 
 export default {
     name: 'XO-game',
-    props: ['playerOne', 'playerTwo', 'activePlayer'],
+    props: ['playerOne', 'playerTwo'],
     data(){
         return {
             numbers: [1,2,3,4,5,6,7,8,9],
             boxes: [],
             currentPlayer: null,
+            Xmarked: [],
+            Omarked: []
         }
     },
     mounted(){
@@ -27,11 +29,13 @@ export default {
 
         eventBus.$on("X", (xoBox) => {
             this.xoBox.value = 1
+            this.Xmarked.push(this.xoBox)
             this.changetoPlayerTwo()
         })
 
         eventBus.$on("O", (xoBox) => {
-            this.xoBox.value = 2
+            this.xoBox.value = 10
+            this.Omarked.push(this.xoBox)
             return this.activePlayer = null
             this.changetoPlayerOne()
         })
@@ -64,6 +68,9 @@ export default {
         },
         changetoPlayerTwo(){
             return this.activePlayer = this.playerTwo
+        },
+        checkWinner(list){
+            
         }
     },
     components: {
