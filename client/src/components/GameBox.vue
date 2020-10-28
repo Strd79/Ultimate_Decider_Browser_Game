@@ -1,8 +1,10 @@
 <template>
     <div>
+        <xOs-game :playerOne='playerOne' :playerTwo="playerTwo"></xOs-game>
         <match-score-board :playerOne='playerOne' :playerTwo="playerTwo" :playerOneMatchScore="playerOneMatchScore" :playerTwoMatchScore="playerTwoMatchScore" ></match-score-board>
         <memory-match-game v-if="selectedGame === 0" :playerOne='playerOne' :playerTwo="playerTwo" />
         <rock-paper-scissors-game v-if="selectedGame === 1" :playerOne='playerOne' :playerTwo="playerTwo" :playerOneMatchScore="playerOneMatchScore" :playerTwoMatchScore="playerTwoMatchScore" ></rock-paper-scissors-game>
+       
          
     </div>
 </template>
@@ -12,6 +14,7 @@ import { eventBus } from '@/main.js'
 import MemoryMatchGame from "@/components/memoryMatch/MemoryMatchGame"
 import RockPaperScissors from "@/components/rps/RpsGame.vue"
 import MatchScoreBoard from "./MatchScoreBoard.vue"
+import XOsGame from "@/components/XOs/XOsGame.vue"
 
 export default {
     name: 'game-box',
@@ -62,7 +65,9 @@ export default {
     components: {
         'memory-match-game': MemoryMatchGame,
         'rock-paper-scissors-game': RockPaperScissors,
-        'match-score-board': MatchScoreBoard
+        'match-score-board': MatchScoreBoard,
+        'xOs-game': XOsGame
+
 
 }
 }
