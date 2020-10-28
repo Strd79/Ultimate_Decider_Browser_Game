@@ -1,6 +1,6 @@
 <template>
   <div v-if="playerOne" id="mm-scoreboard">
-    <h2>Score board</h2>
+    <h2>Game Scoreboard</h2>
         <h3 v-if="activePlayer"><strong>{{activePlayer.name}}</strong> to play</h3>
         <div id="player-scores">
             <div id="player1">
@@ -27,11 +27,19 @@ export default {
     display: flex;
     flex-direction: column;
     padding: 30px;
-    background-color: rgb(194, 17, 17);
-    color: white;
+    background-color: white;
+    color: rgb(197, 5, 5);
     margin: 20px 20px;
     border-radius: 10px;
     box-shadow: 3px 5px 6px rgba(0, 0, 0, 0.2);
+}
+
+#mm-scoreboard > h2 {
+    font-family: 'Bangers', cursive;
+    font-size: 50px;
+    color: rgb(197, 5, 5);
+    text-shadow: 2px 2px rgba(0, 0, 0, 0.4);
+    margin: 25px 0;
 }
 
 #player-scores {

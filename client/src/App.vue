@@ -51,7 +51,7 @@ export default {
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -59,11 +59,22 @@ export default {
   margin-top: 60px;
 }
 
+h1 {
+  font-family: 'Bangers', cursive;
+  color: rgb(197, 5, 5);
+  text-shadow: 5px 5px rgb(255, 255, 255);
+}
+
+#app > h1 {
+  font-size: 100px;
+}
+
 html {
   min-height: 100vh;
 }
 
 body {
-  background-image: radial-gradient(rgba(253, 249, 0, 0.2), rgba(253, 249, 0, 0.6));
+  color: white;
+  background-image: radial-gradient(rgba(4, 104, 218, 0.4), rgb(4, 104, 218));
 }
 </style>

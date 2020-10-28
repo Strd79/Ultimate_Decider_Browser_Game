@@ -37,6 +37,9 @@ export default {
     border-radius: 4px;
     box-shadow: 3px 5px 8px rgba(0, 0, 0, 0.2), 3px 5px 20px rgba(0, 0, 0, 0.2);
 }
+.class:hover{
+    cursor: pointer;
+}
 
 .front-image {
     width: 85px;
