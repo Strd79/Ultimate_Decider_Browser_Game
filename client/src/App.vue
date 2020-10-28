@@ -2,7 +2,7 @@
   <div id="app">
     <h1>Ultimate Decider!</h1>
     <player-form :playersList="playersList"></player-form>
-    <game-box :playerOne='playerOne' :playerTwo="playerTwo"></game-box>
+    <game-box class="game-box" :playerOne='playerOne' :playerTwo="playerTwo"></game-box>
   </div>
 </template>
 
@@ -59,14 +59,11 @@ export default {
   margin-top: 60px;
 }
 
-h1 {
+#app > h1 {
+  font-size: 100px;
   font-family: 'Bangers', cursive;
   color: rgb(197, 5, 5);
   text-shadow: 5px 5px rgb(255, 255, 255);
-}
-
-#app > h1 {
-  font-size: 100px;
 }
 
 html {
@@ -76,5 +73,9 @@ html {
 body {
   color: white;
   background-image: radial-gradient(rgba(4, 104, 218, 0.4), rgb(4, 104, 218));
+}
+
+.game-box {
+margin-bottom: 50px;
 }
 </style>

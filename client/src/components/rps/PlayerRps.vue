@@ -1,13 +1,14 @@
 <template>
 <div id="rps-parent">
     <div class='playerRps'>
-        <h2 v-if="playerOne && !winner && !draw">Player: {{ this.activePlayer.name}}</h2>
-        
-        <button v-on:click="makeRock">Rock</button>
-        <button v-on:click="makePaper">Paper</button>
-        <button v-on:click="makeScissors">Scissors</button>
-        <button v-on:click="makeLizard">Lizard</button>
-        <button v-on:click="makeSpock">Spock</button>
+        <h2 v-if="playerOne && !winner && !draw">{{ this.activePlayer.name}}'s Turn To Play</h2>
+        <div class="choices">
+            <button v-on:click="makeRock"><img src="/assets/rock.png"></img></button>
+            <button v-on:click="makePaper"><img src="/assets/paper.png"></button>
+            <button v-on:click="makeScissors"><img src="/assets/scissors.png"></button>
+            <button v-on:click="makeLizard"><img src="/assets/lizard.png"></button>
+            <button v-on:click="makeSpock"><img src="/assets/spock.png"></button>
+        </div>
         
     </div>
 </div>
@@ -52,12 +53,39 @@ export default {
 }
 
 .playerRps {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     background-color: white;
-    width: 500px;
+    width: 700px;
     padding:30px;
     color: rgb(56, 56, 99);
     border-radius: 15px;
     margin-bottom: 100px;
     box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+button > img {
+    width: 100px;
+}
+
+.choices > button {
+    width: 120px;
+    height: 120px;
+    margin: 10px;
+    background-color: rgb(197, 5, 5);
+    border-radius: 6px;
+    border: 2px solid  white;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.choices > button:hover {
+    cursor: pointer;
+    background-color: rgb(4, 104, 218);
+    transition: 0.4s;
+}
+
+.choices {
+    display: flex;
 }
 </style>

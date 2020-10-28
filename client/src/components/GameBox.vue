@@ -12,6 +12,7 @@ import { eventBus } from '@/main.js'
 import MemoryMatchGame from "@/components/memoryMatch/MemoryMatchGame"
 import RockPaperScissors from "@/components/rps/RpsGame.vue"
 import MatchScoreBoard from "./MatchScoreBoard.vue"
+import VueSimpleAlert from '@/main.js'
 
 export default {
     name: 'game-box',
@@ -26,14 +27,12 @@ export default {
     },
     mounted(){
         eventBus.$on('playerOneIncrease', () => {
-            console.log("playerOnEIncrease called");
             this.playerOneMatchScore += 1
-            this.checkForWinner()
+            setTimeout(this.checkForWinner, 2000)
         })
          eventBus.$on('playerTwoIncrease', () => {
-             console.log("playerTwoIncrease called");
             this.playerTwoMatchScore += 1
-            this.checkForWinner()
+            setTimeout(this.checkForWinner, 2000)
         })
         eventBus.$on('game-started', () => {
             this.randomiseGame()
@@ -47,18 +46,28 @@ export default {
           
         },
         
-        checkForWinner(){
-            if (this.playerOneMatchScore + this.playerTwoMatchScore === 5){
-                if (this.playerOneMatchScore > this.playerTwoMatchScore){
-                    this.overallWinner = this.playerOne.name
-                } else {
-                    this.overallWinner = this.playerTwo.name
-                }
+        // checkForWinner(){
+        //     if (this.playerOneMatchScore + this.playerTwoMatchScore === 5){
+        //         if (this.playerOneMatchScore > this.playerTwoMatchScore){
+        //             this.overallWinner = this.playerOne.name
+        //         } else {
+        //             this.overallWinner = this.playerTwo.name
+        //         }
 
+        //     }
+        // }
+
+        checkForWinner(){
+        if (this.playerOneMatchScore >= 3){
+            this.overallWinner = this.playerOne.name
+            this.$alert(`${this.overallWinner} Wins! They are the Ultimate Decider`)
+        } else if (this.playerTwoMatchScore >=3) {
+            this.overallWinner = this.playerTwo.name
+            this.$alert(`${this.overallWinner} Wins! They are the Ultimate Decider`)
             }
         }
+        },
 
-    },
     components: {
         'memory-match-game': MemoryMatchGame,
         'rock-paper-scissors-game': RockPaperScissors,

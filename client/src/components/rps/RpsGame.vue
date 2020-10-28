@@ -1,6 +1,6 @@
 <template>
     <div id="rps-game">
-        <h1>Rock Paper Scissors</h1>
+        <h2>Rock Paper Scissors</h2>
         <player-rps :playerOne="playerOne" :playerTwo="playerTwo" :activePlayer="activePlayer" :winner="winner" :playerOne_choice="playerOne_choice" :playerTwo_choice="playerTwo_choice" :draw="draw"></player-rps>
         
     </div>
@@ -165,4 +165,13 @@ export default {
 #rps-game > h1 {
     margin-top: 50px;
 }
+
+#rps-game > h2 {
+    font-family: 'Bangers', cursive;
+    font-size: 40px;
+    color: white;
+    text-shadow: 2px 2px rgba(0, 0, 0, 0.4);
+    margin: 25px 0;
+}
+
 </style>

@@ -1,7 +1,7 @@
 <template>
 <div>
     <div class="heading">
-        <h1>Memory Match Game</h1>
+        <h2>Memory Match Game</h2>
     </div>    
     <div class="memory-game">
         <div class="grid">
@@ -177,6 +177,14 @@ export default {
 
 .heading > h1 {
     margin-top: 40px;
+}
+
+.heading > h2 {
+    font-family: 'Bangers', cursive;
+    font-size: 40px;
+    color: white;
+    text-shadow: 2px 2px rgba(0, 0, 0, 0.4);
+    margin: 25px 0;
 }
 
 </style>

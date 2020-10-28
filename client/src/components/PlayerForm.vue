@@ -4,7 +4,7 @@
         <form id="new-player-form" v-on:submit="addPlayer">
             <label for="name">New Player:</label>
             <input type="text" v-model="playerName" required/>
-            <input type="submit" value="ADD PLAYER">
+            <input id="add-player-button" type="submit" value="ADD PLAYER">
         </form>
       </div>
       <div>
@@ -73,21 +73,24 @@ export default {
 
 <style>
 input[type="text"] {
-    height: 20px;
+    height: 40px;
+    width: 200px;
     margin: 0 15px;
     border-radius: 6px;
 }
 
 select {
-    height: 30px;
-    width: 150px;
+    height: 40px;
+    width: 200px;
     border-radius: 6px;
 }
 
 input[type="submit"] {
+    font-family: 'Bangers', cursive;
+    font-size: 25px;
+    text-shadow: 2px 2px rgba(0, 0, 0, 0.4);
     background-color: rgb(197, 5, 5);
     color: white;
-    font-weight: 600;
     width: 130px;
     height: 40px;
     border: 3px solid white;
@@ -97,6 +100,9 @@ input[type="submit"] {
 }
 
 #play-button {
+    font-family: 'Bangers', cursive;
+    font-size: 25px;
+    text-shadow: 2px 2px rgba(0, 0, 0, 0.4);
     margin: 40px;
     height: 120px;
     width: 120px;
@@ -107,6 +113,14 @@ input[type="submit"] {
 
 #play-button:focus {
     outline: none;
+}
+
+#play-button:hover {
+    cursor: pointer;
+}
+
+#add-player-button:hover {
+    cursor: pointer;
 }
 
 #new-game-form {
