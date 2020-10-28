@@ -4,7 +4,7 @@
         <form id="new-player-form" v-on:submit="addPlayer">
             <label for="name">New Player:</label>
             <input type="text" v-model="playerName" required/>
-            <input type="submit" value="Add Player">
+            <input type="submit" value="ADD PLAYER">
         </form>
       </div>
       <div>
@@ -68,5 +68,23 @@ export default {
 </script>
 
 <style>
+input[type="text"] {
+    height: 20px;
+    margin: 0 15px;
+}
 
+select {
+    height: 30px;
+    width: 150px;
+}
+
+input[type="submit"] {
+    background-color: rgb(197, 5, 5);
+    color: white;
+    font-weight: 600;
+    width: 100px;
+    height: 30px;
+    border-radius: 6px;
+
+}
 </style>

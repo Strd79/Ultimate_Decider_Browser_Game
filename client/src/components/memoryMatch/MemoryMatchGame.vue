@@ -1,11 +1,17 @@
 <template>
-    <div v-if="playerOne">
-    <h1>Memory Match Game</h1>
+<div>
+    <div class="heading">
+        <h1>Memory Match Game</h1>
+    </div>    
+    <div class="memory-game">
         <div class="grid">
             <card v-for="(card, index) in cards" :flippedCardArray="flippedCards" :card="card" :key="index"></card>
         </div>
-        <memory-match-scoreboard :activePlayer="activePlayer" :playerOne='playerOne' :playerTwo="playerTwo" :playerOne_score="playerOne_score" :playerTwo_score="playerTwo_score"></memory-match-scoreboard>
+        <div class="memory-scoreboard">
+            <memory-match-scoreboard :activePlayer="activePlayer" :playerOne='playerOne' :playerTwo="playerTwo" :playerOne_score="playerOne_score" :playerTwo_score="playerTwo_score"></memory-match-scoreboard>
+        </div>
     </div>
+</div>
 </template>
 
 <script>
@@ -51,17 +57,6 @@ export default {
                 return this.playerTwo
             }
         },
-
-        // whoWins: function(){
-        //     if (this.matchedCards.length === 16) {
-        //         console.log("whoWins function running");
-        //         if (this.playerOne_score > this.playerTwo_score) {
-        //             alert(`${playerOne.name} wins!`)
-        //         } else {
-        //             alert(`${playerTwo.name} wins!`)
-        //         }
-        //     }
-        // }
     },
     methods: {
         createCards(items){
@@ -157,17 +152,25 @@ export default {
 
 
 .grid {
-  background-color: blue;
+  background-color: rgb(4, 104, 218);
   list-style: none;
-  margin: 0 auto;
-  padding: 20px;
+  margin-top: 20px;
+  padding: 40px;
+  padding-bottom: 60px;
   display: grid;
-  grid-gap: 10px;
+  grid-gap: 20px;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr;
   width: 500px;
   height: 500px;
-
+  border-radius: 10px;
+  box-shadow: 3px 5px 6px rgba(0, 0, 0, 0.2);
 }
+
+.memory-game {
+    display: flex;
+    justify-content: center;
+}
+
 
 </style>

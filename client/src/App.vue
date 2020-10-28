@@ -58,4 +58,12 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+
+html {
+  min-height: 100vh;
+}
+
+body {
+  background-image: radial-gradient(rgba(253, 249, 0, 0.2), rgba(253, 249, 0, 0.6));
+}
 </style>
