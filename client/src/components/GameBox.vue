@@ -50,9 +50,9 @@ export default {
         checkForWinner(){
             if (this.playerOneMatchScore + this.playerTwoMatchScore === 5){
                 if (this.playerOneMatchScore > this.playerTwoMatchScore){
-                    return this.overallWinner = this.playerOne.name
+                    this.overallWinner = this.playerOne.name
                 } else {
-                    return this.overallWinner = this.playerTwo.name
+                    this.overallWinner = this.playerTwo.name
                 }
 
             }

@@ -5,7 +5,7 @@
         </div>
         <div>
             <h3> {{this.playerTwo.name}}: {{this.playerTwoMatchScore}}</h3>
-            <h3> {{this.overallWinner}} is the Ultimate Decider </h3>
+            <h3 v-if="this.overallWinner"> {{this.overallWinner}} is the Ultimate Decider! </h3>
         </div>
     </div>
 </template>

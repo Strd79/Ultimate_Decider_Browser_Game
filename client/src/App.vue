@@ -1,9 +1,7 @@
 <template>
   <div id="app">
     <h1>Ultimate Decider!</h1>
-    <button v-on:click="openModal">Open Modal</button>
     <player-form :playersList="playersList"></player-form>
-    <!-- <modal-win-pop-up v-model="modalOpen" :currentWinner='currentWinner'></modal-win-pop-up> -->
     <game-box :playerOne='playerOne' :playerTwo="playerTwo"></game-box>
   </div>
 </template>
@@ -15,7 +13,6 @@ import PlayerForm from './components/PlayerForm'
 import PlayerServices from './services/PlayerServices.js'
 import GameBox from './components/GameBox'
 import MemoryGame from './components/memoryMatch/MemoryMatchGame'
-import ModalWinPopUp from './components/ModalWinPopUp'
 
 export default {
   name: 'App',
@@ -31,7 +28,6 @@ export default {
   components: {
     'player-form': PlayerForm,
     'game-box': GameBox,
-    'modal-win-pop-up': ModalWinPopUp
   },
 
   mounted(){
@@ -42,14 +38,6 @@ export default {
       this.playerOne = player1
       this.playerTwo = player2
     })
-    eventBus.$on('memoryMatch-playerOne-winner', () => {
-      this.currentWinner = this.playerOne
-      this.modalOpen = !this.modalOpen
-    })
-    eventBus.$on('memoryMatch-playerTwo-winner', () => {
-      this.currentWinner = this.playerTwo
-      this.modalOpen = !this.modalOpen
-    })
   },
 
   methods: {
@@ -57,9 +45,6 @@ export default {
       PlayerServices.getPlayers()
       .then(players => this.playersList = players)
     },
-    openModal() {
-            this.modalOpen = !this.modalOpen
-        }
   }
 }
 </script>

@@ -3,7 +3,7 @@
       <div class="card_back" v-on:click="makeCardFlipped">
         <img class="back-image" v-if='!card.flipped' :src="card.cardBack">
         <div class="card_front">
-            <img class="front-image" v-if='card.flipped' :src="card.imgUrl" disabled>
+            <img class="front-image" v-if='card.flipped' :src="card.imgUrl">
         </div>
       </div>
   </div>
