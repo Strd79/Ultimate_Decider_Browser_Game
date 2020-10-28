@@ -18,7 +18,8 @@ export default {
     props: ['playerOne', 'playerTwo'],
     data(){
         return {
-            shapes: ['circle', 'triangle', 'cross', 'star', 'square', 'crescent', 'hexagon', 'diamond'],   
+            shapes: ['apple', 'castle', 'dwarf', 'frog', 'genie', 'lion', 'vampire', 'wizard'],
+            // shapes: ['circle', 'crescent', 'cross', 'diamond', 'hexagon', 'square', 'star', 'triangle']   
             cards: [],
             flippedCards: [],
             matchedCards: [],

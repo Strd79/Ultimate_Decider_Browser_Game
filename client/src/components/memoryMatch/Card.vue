@@ -33,16 +33,15 @@ export default {
     display: flex;
     background-color: white;
     justify-content: center;
+    align-items: center;
     
 }
 
 .front-image {
-    align-self: center;
-    width: 100px;
+    width: 85px;
 }
 
 .back-image {
-    align-self: center;
     width: 100px;
 }
 
