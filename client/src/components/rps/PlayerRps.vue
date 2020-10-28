@@ -24,6 +24,7 @@
 
 <script>
 import { eventBus } from '@/main'
+import VueSimpleAlert from '@/main.js'
 
 export default {
     name: 'playerRps',
