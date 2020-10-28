@@ -144,7 +144,7 @@ export default {
         
         },
         displayWinner(player1Choice, player2Choice, winner){
-            this.$alert(`${this.playerOne.name} picked ${player1Choice}, ${this.playerTwo.name} picked ${player2Choice}. And the winner is ${winner}!`)
+            this.$alert(`${this.playerOne.name} picked ${player1Choice}, ${this.playerTwo.name} picked ${player2Choice}. ${winner} wins!`)
 
         },
         displayDraw(player1Choice, player2Choice, draw){
