@@ -1,6 +1,10 @@
 <template>
   <div id="app">
     <h1>Ultimate Decider!</h1>
+    <div class="intro"> 
+    <p>Can't decide who's turn it is to do the dishes? Or who's turn is it to take the rubbish out?</p>
+    <p>Let <span>ULTIMATE DECIDER</span> help with a best of 5 games match.</p>
+    </div>
     <player-form :playersList="playersList"></player-form>
     <game-box class="game-box" :playerOne='playerOne' :playerTwo="playerTwo"></game-box>
   </div>
@@ -61,6 +65,7 @@ export default {
 
 #app > h1 {
   font-size: 100px;
+  margin: 40px 0;
   font-family: 'Bangers', cursive;
   color: rgb(197, 5, 5);
   text-shadow: 5px 5px rgb(255, 255, 255);
@@ -78,4 +83,18 @@ body {
 .game-box {
 margin-bottom: 50px;
 }
+
+span {
+  font-family: 'Bangers', cursive;
+  font-size: 25px;
+}
+
+p {
+  font-size: 20px;
+}
+
+.intro {
+  margin-bottom: 50px;
+}
+
 </style>

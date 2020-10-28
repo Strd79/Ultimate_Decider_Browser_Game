@@ -82,7 +82,7 @@ button > img {
 .choices > button:hover {
     cursor: pointer;
     background-color: rgb(4, 104, 218);
-    transition: 0.4s;
+    transition: 0.3s;
 }
 
 .choices {

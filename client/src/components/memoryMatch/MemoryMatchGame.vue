@@ -183,7 +183,7 @@ export default {
     font-family: 'Bangers', cursive;
     font-size: 40px;
     color: white;
-    text-shadow: 2px 2px rgba(0, 0, 0, 0.4);
+    text-shadow: 2px 3px rgba(0, 0, 0, 0.6);
     margin: 25px 0;
 }
 

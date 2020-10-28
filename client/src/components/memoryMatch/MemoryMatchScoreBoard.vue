@@ -1,15 +1,13 @@
 <template>
   <div v-if="playerOne" id="mm-scoreboard">
     <h2>Game Scoreboard</h2>
-        <h3 v-if="activePlayer"><strong>{{activePlayer.name}}</strong> to play</h3>
+        <h3 v-if="activePlayer">{{activePlayer.name}} to play</h3>
         <div id="player-scores">
             <div id="player1">
-                <h3>Player: {{playerOne.name}} </h3>
-                <h4>Score: {{playerOne_score}}</h4>
+                <h4>{{playerOne.name}}: {{playerOne_score}}</h4>
             </div>
             <div id="player2">
-                <h3>Player: {{playerTwo.name}} </h3>
-                <h4>Score: {{playerTwo_score}}</h4>
+                <h4>{{playerTwo.name}}: {{playerTwo_score}}</h4>
             </div>    
         </div>
   </div>
@@ -28,7 +26,6 @@ export default {
     flex-direction: column;
     padding: 30px;
     background-color: white;
-    color: rgb(197, 5, 5);
     margin: 20px 20px;
     border-radius: 10px;
     box-shadow: 3px 5px 6px rgba(0, 0, 0, 0.2);

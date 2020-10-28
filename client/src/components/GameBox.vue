@@ -43,7 +43,6 @@ export default {
     methods: {
         randomiseGame() {
           this.selectedGame = Math.floor((Math.random() * 2))
-          
         },
         
         // checkForWinner(){

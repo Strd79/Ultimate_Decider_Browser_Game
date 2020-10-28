@@ -77,17 +77,19 @@ input[type="text"] {
     width: 200px;
     margin: 0 15px;
     border-radius: 6px;
+    box-sizing: border-box;
 }
 
 select {
     height: 40px;
     width: 200px;
     border-radius: 6px;
+    box-sizing: border-box;
 }
 
 input[type="submit"] {
     font-family: 'Bangers', cursive;
-    font-size: 25px;
+    font-size: 20px;
     text-shadow: 2px 2px rgba(0, 0, 0, 0.4);
     background-color: rgb(197, 5, 5);
     color: white;
@@ -117,10 +119,14 @@ input[type="submit"] {
 
 #play-button:hover {
     cursor: pointer;
+    background-color: rgb(4, 104, 218);
+    transition: 0.3s;
 }
 
 #add-player-button:hover {
     cursor: pointer;
+    background-color: rgb(4, 104, 218);
+    transition: 0.3s;
 }
 
 #new-game-form {
