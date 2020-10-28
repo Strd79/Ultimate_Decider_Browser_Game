@@ -12,6 +12,7 @@
 import { eventBus } from '@/main.js'
 import Card from './Card.vue'
 import MemoryMatchScoreBoard from '@/components/memoryMatch/MemoryMatchScoreBoard.vue'
+import VueSimpleAlert from '@/main.js'
 
 export default {
     name: 'memory-match-game',
@@ -132,15 +133,16 @@ export default {
             if (this.matchedCards.length === 16) {
                 if (this.playerOne_score > this.playerTwo_score) {
                     eventBus.$emit("playerOneIncrease")
-                    alert(`${this.playerOne.name} wins with a score of ${this.playerOne_score}`)
+                    this.$alert(`${this.playerOne.name} wins with a score of ${this.playerOne_score}`);
                 }
                 else if(this.playerOne_score < this.playerTwo_score) {
                     eventBus.$emit("playerTwoIncrease")
-                    alert(`${this.playerTwo.name} wins with a score of ${this.playerTwo_score}`)
+                    this.$alert(`${this.playerTwo.name} wins with a score of ${this.playerTwo_score}`);
                 }
                 else {
                     eventBus.$emit("memoryMatch-draw")
-                    alert("It's a draw! Play again")
+                    this.$alert("Hello Vue Simple Alert.");
+                    alert("It's a Draw - how disapointing")
                 }
             }
         }
