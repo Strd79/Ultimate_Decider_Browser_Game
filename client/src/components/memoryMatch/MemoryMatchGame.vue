@@ -155,7 +155,7 @@ export default {
 
 
 .grid {
-  background-color: rgb(4, 104, 218);
+  background-color: rgb(197, 5, 5);
   list-style: none;
   margin-top: 20px;
   padding: 40px;
@@ -175,5 +175,8 @@ export default {
     justify-content: center;
 }
 
+.heading > h1 {
+    margin-top: 40px;
+}
 
 </style>

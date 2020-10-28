@@ -9,18 +9,22 @@
       </div>
       <div>
         <form id="new-game-form" v-on:submit="startGame">
-            <label for="player1">Player 1:</label>
-            <select name="player1" id="player1" v-model="playerOne" required>
-                <option disabled selected value="">Select a Player</option>
-                <option v-for="(player, index) in playersList" :key="index" :value="player">{{player.name}}</option>
-            </select>
-            <label for="player2">Player 2:</label>
-            <select name="player2" id="player2" v-model="playerTwo" required>
-                <option disabled selected value="">Select a Player</option>
-                <option v-for="(player, index) in playersList" :key="index" :value="player">{{player.name}}</option>
-            </select><br>
-            <input type="submit" value="PLAY GAME">
+            <div id="player-1-select">
+                <label for="player1">Player 1:</label>
+                <select name="player1" id="player1" v-model="playerOne" required>
+                    <option disabled selected value="">Select a Player</option>
+                    <option v-for="(player, index) in playersList" :key="index" :value="player">{{player.name}}</option>
+                </select>
+            </div>
+            <div id="player-2-select">
+                <label for="player2">Player 2:</label>
+                <select name="player2" id="player2" v-model="playerTwo" required>
+                    <option disabled selected value="">Select a Player</option>
+                    <option v-for="(player, index) in playersList" :key="index" :value="player">{{player.name}}</option>
+                </select>
+            </div>
         </form>
+        <input id="play-button" type="submit" form="new-game-form" value="PLAY GAME">
       </div>
   </div>
 </template>
@@ -36,7 +40,7 @@ export default {
         return {
             playerName: null,
             playerOne: null,
-            playerTwo: null
+            playerTwo: null,
 
         }
     },
@@ -71,20 +75,65 @@ export default {
 input[type="text"] {
     height: 20px;
     margin: 0 15px;
+    border-radius: 6px;
 }
 
 select {
     height: 30px;
     width: 150px;
+    border-radius: 6px;
 }
 
 input[type="submit"] {
     background-color: rgb(197, 5, 5);
     color: white;
     font-weight: 600;
-    width: 100px;
-    height: 30px;
+    width: 130px;
+    height: 40px;
+    border: 3px solid white;
     border-radius: 6px;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.4);
 
 }
+
+#play-button {
+    margin: 40px;
+    height: 120px;
+    width: 120px;
+    border-radius: 50%;
+    border: 3px solid white;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+#play-button:focus {
+    outline: none;
+}
+
+#new-game-form {
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+}
+
+#new-player-form {
+    font-weight: bold;
+    margin-bottom: 30px
+}
+
+#player-1-select {
+    font-weight: bold;
+    margin-right: 20px;
+}
+
+#player1 {
+ margin-left: 20px;
+}
+
+#player-2-select {
+    font-weight: bold;
+}
+
+
+
+
 </style>

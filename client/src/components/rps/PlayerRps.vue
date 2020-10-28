@@ -1,4 +1,5 @@
 <template>
+<div id="rps-parent">
     <div class='playerRps'>
         <h2 v-if="playerOne && !winner && !draw">Player: {{ this.activePlayer.name}}</h2>
         <div v-if="winner">
@@ -19,6 +20,7 @@
         <button v-on:click="makeSpock">Spock</button>
         
     </div>
+</div>
   
 </template>
 
@@ -54,5 +56,18 @@ export default {
 </script>
 
 <style>
+#rps-parent {
+    display: flex;
+    justify-content: center;
+}
 
+.playerRps {
+    background-color: white;
+    width: 500px;
+    padding:30px;
+    color: rgb(56, 56, 99);
+    border-radius: 15px;
+    margin-bottom: 100px;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.4);
+}
 </style>
