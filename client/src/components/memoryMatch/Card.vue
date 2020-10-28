@@ -33,13 +33,9 @@ export default {
     display: flex;
     background-color: white;
     justify-content: center;
-<<<<<<< HEAD
+    align-items: center;
     border-radius: 4px;
     box-shadow: 3px 5px 8px rgba(0, 0, 0, 0.2), 3px 5px 20px rgba(0, 0, 0, 0.2);
-=======
-    align-items: center;
-    
->>>>>>> 56585f91df52bf6991e471819c29c8e89b00b701
 }
 
 .front-image {
