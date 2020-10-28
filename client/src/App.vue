@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <h1>Ultimate Decider!</h1>
+    <leaderboard :playersList="playersList"></leaderboard>
     <player-form :playersList="playersList"></player-form>
     <game-box :playerOne='playerOne' :playerTwo="playerTwo"></game-box>
   </div>
@@ -13,6 +14,7 @@ import PlayerForm from './components/PlayerForm'
 import PlayerServices from './services/PlayerServices.js'
 import GameBox from './components/GameBox'
 import MemoryGame from './components/memoryMatch/MemoryMatchGame'
+import LeaderBoard from './components/LeaderBoard.vue'
 
 export default {
   name: 'App',
@@ -28,6 +30,8 @@ export default {
   components: {
     'player-form': PlayerForm,
     'game-box': GameBox,
+    'leaderboard': LeaderBoard
+
   },
 
   mounted(){
