@@ -1,5 +1,5 @@
 # Browser Game
-This was my first group project with CodeClan, to build a Browser Game. My team consisted of @Cam-XCV, @Rebekah47 and myself. We came up with a collection of small games, built in to one over-all game. Two players can compete to be crowned the Ultimate Decider. The intension was to make a small fun game that could be used to settle a decision between two people. 
+This was my first group project with CodeClan, to build a Browser Game. My team consisted of Campbell Murray, Rebekah Salem-Dalgety and myself. We came up with a collection of small games, built in to one over-all game. Two players can compete to be crowned the Ultimate Decider. The intension was to make a small fun game that could be used to settle a decision between two people. 
 
 ### THE BRIEF
 
