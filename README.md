@@ -8,3 +8,9 @@ Create a browser game based on an existing card or dice game. Model and test the
 Write your own MVP with some specific goals to be achieved based on the game you choose to model.
 
 You might use persistence to keep track of the state of the game or track scores/wins. Other extended features will depend on the game you choose.
+
+### Game Screenshots
+
+<img src="images/ultimate_decider_memory_match.png" />
+
+<img src="images/ultimate_decider_rock_paper_scissors_lizard_spock.png" />
