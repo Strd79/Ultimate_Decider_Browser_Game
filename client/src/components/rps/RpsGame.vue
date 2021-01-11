@@ -1,6 +1,6 @@
 <template>
     <div id="rps-game">
-        <h2>Rock Paper Scissors</h2>
+        <h2>Rock Paper Scissors Lizard Spock</h2>
         <player-rps :playerOne="playerOne" :playerTwo="playerTwo" :activePlayer="activePlayer" :winner="winner" :playerOne_choice="playerOne_choice" :playerTwo_choice="playerTwo_choice" :draw="draw"></player-rps>
         
     </div>
